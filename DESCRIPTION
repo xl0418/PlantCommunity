@@ -1,15 +1,14 @@
 Package: PlantCommunity
-Title: What the Package Does (One Line, Title Case)
+Title: Plant Community Assembly Simulation (PCAS)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Liang",
+           family = "Xu",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "xl0418@gmail.com",
+           comment = c(ORCID = "0000-0002-5528-1298"))
+Description: PCAS is designed to simulate how plant species assemble in a community under a variety of assebmly hypothesis. Such as the neutral theory, the Janzen-Connell hypothesis, etc.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

@@ -22,7 +22,7 @@ colonization_probability <-
     } else {
       distance <- sqrt(sum(coordinate1 - coordinate2) ^ 2)
     }
-    abundance <- abundence_vector[community[coordinate1[1], coordinate1[2]] + 1]
+    abundance <- abundance_vector[community[coordinate1[1], coordinate1[2]] + 1]
     probability <-
       (1 - jc_strength * abundance / L ^ 2) * (1 / sqrt(2 * pi) / sig_disp * exp(-distance ^
                                                                                    2 / 2 / sig_disp ^ 2))

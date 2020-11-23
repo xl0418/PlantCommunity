@@ -1,3 +1,17 @@
+#' Plant Community Assembly Simulation (PCAS)
+#'
+#' Simulate a plant community assembly
+#'
+#' @param L The grid size
+#' @param jc_strength The strength of the Janzen-Connell (negative density dependence) effect. When 0, it represents a neutral model
+#' @param sig_disp The dispersal width
+#' @param tend The simulating time
+#' @param output The directory and file name of the output
+#' @param num_cores The number of the cores for parallel computing
+#' @param torus With bundary or not
+#'
+#' @return None
+#'
 #' @export
 PlantCommunitySim <-
   function(L,
@@ -39,4 +53,3 @@ PlantCommunitySim <-
         )
     }
   }
-
