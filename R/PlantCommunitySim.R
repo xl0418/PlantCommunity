@@ -20,16 +20,27 @@ PlantCommunitySim <-
            tend,
            output,
            speciation_rate,
+           input_community = FALSE,
            num_cores = 4,
            torus = TRUE) {
     numCores <- min(num_cores, parallel::detectCores())
 
-    community <-
-      matrix(0, nrow = L, ncol = L)  # initialize the grid
-    ini.row <- sample(seq(0, L), size = 1)
-    ini.col <- sample(seq(0, L), size = 1)
-    community[ini.row, ini.col] <- 1
-    abundance_vector <- c(L ^ 2 - 1, 1)
+    if (is.matrix(input_community) == "matrix") {
+      community <- input_community
+      species.id.bank <- unique(as.vector(community))
+      abundance_vector <- NULL
+      for (species.id in species.id.bank) {
+        abundance_vector <- c(abundance_vector, length(which(as.vector(community) == species.id)))
+      }
+    }else{
+      community <-
+        matrix(0, nrow = L, ncol = L)  # initialize the grid
+      ini.row <- sample(seq(0, L), size = 1)
+      ini.col <- sample(seq(0, L), size = 1)
+      community[ini.row, ini.col] <- 1
+      abundance_vector <- c(L ^ 2 - 1, 1)
+    }
+
     coordinate_bank <-
       cbind(rep(c(1:L), L), rep(c(1:L), each = L))
 
@@ -75,8 +86,7 @@ PlantCommunitySim <-
         community[dead.row, dead.col] <- length(abundance_vector)
         abundance_vector <- c(abundance_vector, 1)
       }
-
-
-
     }
+    output_data <- list(community = community, abundance_vector = abundance_vector)
+    save(output_data, file=paste0("output",'.RData'))
   }
